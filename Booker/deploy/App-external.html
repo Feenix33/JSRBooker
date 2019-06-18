@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random App Name54225</title>
+
+    <script type="text/javascript" src="https://rally1.rallydev.com/apps/2.1/sdk.js"></script>
+
+    <script type="text/javascript">
+        Rally.onReady(function () {
+                Ext.define("CustomApp",{extend:"Rally.app.App",componentCls:"app",launch:function(){console.log("Launching App"),this._getIterationData()},_getIterationData:function(){Ext.create("Rally.data.wsapi.Store",{limit:200,model:"Iteration",autoLoad:"true",filters:[{property:"Name",operator:"contains",value:"2019"}],fetch:["Name","StartDate","EndDate","Project"],sorters:[{property:"StartDate",direction:"ASC"}],listeners:{load:function(t,e,o){console.log("Logging iterations",t)}}})},_getData:function(){Ext.create("Rally.data.wsapi.Store",{model:"User Story",autoLoad:!0,listeners:{load:function(t,e,o){this._logGrid(t)},scope:this},filter:[{property:"Project",operator:"=",value:"LGS Mavericks (OS DFW)"}],fetch:["Name","FormattedID","ScheduleState","Iteration"]})},_logGrid:function(t){console.log("Logging Store: ",t)}});
+
+            Rally.launchApp('CustomApp', {
+                name:"Random App Name54225",
+                parentRepos:"",
+                version:"0.1.1"
+            });
+
+        });
+    </script>
+
+
+    <style type="text/css">
+        
+    </style>
+</head>
+<body>
+</body>
+</html>
